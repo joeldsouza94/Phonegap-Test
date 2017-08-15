@@ -62,16 +62,25 @@
             <source src="b.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
-        <audio controls="controls">
+        <audio id="myVideo" controls="controls">
             <source src="c.mp3" type="audio/mpeg" />
             Your browser does not support the audio tag.
         </audio><br /><br />
+        <button onclick="enableAutoplay()" type="button">Enable autoplay</button>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+    <script>
+    var vid = document.getElementById("myVideo");
+    function enableAutoplay() { 
+        vid.autoplay = true;
+        vid.load();
+    }
+    </script>
+
 </body>
 
 </html>
