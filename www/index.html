@@ -67,6 +67,10 @@
             Your browser does not support the audio tag.
         </audio><br /><br />
         <button onclick="enableAutoplay()" type="button">Enable autoplay</button>
+        <br /><br />
+        <audio id="successSound" src="file:///android_asset/www/sound/c.mp3" type="audio/mpeg" ></audio>
+        <br /><br />
+        <button onclick="playAudio('successSound')">Play successSound local</button>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -78,7 +82,20 @@
     function enableAutoplay() { 
         vid.autoplay = true;
         vid.load();
+        
     }
+        function playAudio(id) {
+            var audioElement = document.getElementById(id);
+            var url = audioElement.getAttribute('src');
+            var my_media = new Media(url,
+                // success callback
+                function () { console.log("playAudio():Audio Success"); },
+                // error callback
+                function (err) { console.log("playAudio():Audio Error: " + err); }
+            );
+           // Play audio
+            my_media.play();
+        }
     </script>
 
 </body>
